@@ -1,9 +1,9 @@
+'use client';
 import type { NextPage } from 'next'
 import Image from 'next/image';
 import styled from "styled-components";
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
-import { clear } from 'console';
 
 
 const SContainer = styled.div`
@@ -88,11 +88,11 @@ a:hover {
 }
 `;
 
-
-
 const Home: NextPage = () => {
   const [showDropMenu, setShowDropMenu] = useState(false);
+  const [showSummaryMenu, setShowSummaryMenu] = useState(false);
   const [timerId,setTimerId] = useState<number | undefined>(undefined); 
+  const [timerSummryId,setTimerSummryId] = useState<number | undefined>(undefined); 
 
   const onDisplaySwitch = () => {
     setShowDropMenu(!showDropMenu);
@@ -106,6 +106,18 @@ const Home: NextPage = () => {
     }
   };
 
+  const onDisplaySummrySwitch = () => {
+    setShowSummaryMenu(!showSummaryMenu);
+    if (!showSummaryMenu) {
+      const id = setTimeout(() => {
+        setShowSummaryMenu(false);
+      }, 4000) as unknown as number;
+      setTimerSummryId(id);
+    } else {
+      clearTimeout(timerSummryId);
+    }
+  };
+
   useEffect(() => {
     return () => {
       if (timerId !== null) {
@@ -113,6 +125,15 @@ const Home: NextPage = () => {
       }
     };
   }, [timerId]); 
+
+  useEffect(() => {
+    return () => {
+      if (timerSummryId !== null) {
+        clearTimeout(timerSummryId);
+      }
+    };
+  }, [timerSummryId]); 
+
   return (
     <>
     <Head>
@@ -129,25 +150,32 @@ const Home: NextPage = () => {
     <SContainer>
     <SNavi>
     <StyledListItem>
-              <StyledAnchor href="/">ホーム</StyledAnchor>
+              <StyledAnchor href="/">
+                ホーム</StyledAnchor>
           </StyledListItem>
           <StyledListItem>
-              <StyledAnchor href="/cf" onClick={onDisplaySwitch}>家計簿</StyledAnchor>
+              <StyledAnchor onClick={onDisplaySwitch}>家計簿</StyledAnchor>
               {showDropMenu && (
                 <DropdownMenu onMouseLeave={onDisplaySwitch}>
+                  <ul>
                   <DropdownItem>
-                    <li>
                       <a href="/cf">家計簿</a>
-                    </li>
-                    <li>
                       <a href="/cf/summary">集計</a>
-                    </li>
                   </DropdownItem>
+                  </ul>
                 </DropdownMenu>
               )}
           </StyledListItem>
           <StyledListItem>
-              <StyledAnchor href="/summary">予算</StyledAnchor>
+              <StyledAnchor onClick={onDisplaySummrySwitch}>予算</StyledAnchor>
+              {showSummaryMenu && (
+                <DropdownMenu onMouseLeave={onDisplaySummrySwitch}>
+                  <DropdownItem>
+                  <a href="/summary">予算</a>
+                  <a href="/summary/count">集計</a>
+                  </DropdownItem>
+                </DropdownMenu>
+              )}
           </StyledListItem>
           <StyledListItem>
               <StyledAnchor href="/bs/portfolio">資産</StyledAnchor>
@@ -163,10 +191,36 @@ const Home: NextPage = () => {
     <SHome>
       <SFloat>
         <h1>総資産</h1>
-        <h2>手元の現金を登録</h2>
-        <ul>
-          <li>投信</li>
-        </ul>
+        <div>
+          1000000円
+        </div>
+        <svg width="100" height="100" viewBox="0 0 32 32">
+          <circle r="16" cx="16" cy="16" fill="#ccc" />
+          <path d="M16,16 l0,-16 A16,16 0 0,1 28.97,8.14 z" fill="#4CAF50" /> 
+          <path d="M16,16 l0,-16 A16,16 0 1,1 28.97,8.14 z" fill="#FFC107" />
+        </svg>
+        <section>
+          <h2>投信</h2>
+          <ul>
+            <li>
+              <p>テスト投信</p>
+              <ul>
+                <li>100001円</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h2>銀行</h2>
+          <ul>
+            <li>
+              <p>テスト銀行</p>
+              <ul>
+                <li>100001円</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
       </SFloat>
     </SHome>
 
