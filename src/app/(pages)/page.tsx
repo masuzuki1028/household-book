@@ -2,8 +2,8 @@
 import type { NextPage } from 'next'
 import Image from 'next/image';
 import styled from "styled-components";
-import Head from 'next/head';
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 
 
 const SContainer = styled.div`
@@ -47,7 +47,8 @@ const SHome = styled.div`
   display: flex;
   padding: 16px;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;   
+  padding: 16px;
   width: 100%;
   background: white;
   color: black;
@@ -55,7 +56,14 @@ const SHome = styled.div`
 
 const SFloat = styled.div`
   float: reft;
-  width: 226px;
+  width: 25%;
+  padding: 16px;
+`;
+
+const SHomeFloat = styled.div`
+  float: left;
+  width: 75%;   // 画面の半分の幅を使用
+  padding: 16px;
 `;
 
 const DropdownMenu = styled.div`
@@ -136,10 +144,6 @@ const Home: NextPage = () => {
 
   return (
     <>
-    <Head>
-      <title>Home</title>
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
     <SContainer>
       <SLogo>
         <a href="/">
@@ -159,8 +163,8 @@ const Home: NextPage = () => {
                 <DropdownMenu onMouseLeave={onDisplaySwitch}>
                   <ul>
                   <DropdownItem>
-                      <a href="/cf">家計簿</a>
-                      <a href="/cf/summary">集計</a>
+                      <Link href="/cf">家計簿</Link>
+                      <Link href="/cf/summary">集計</Link>
                   </DropdownItem>
                   </ul>
                 </DropdownMenu>
@@ -170,10 +174,12 @@ const Home: NextPage = () => {
               <StyledAnchor onClick={onDisplaySummrySwitch}>予算</StyledAnchor>
               {showSummaryMenu && (
                 <DropdownMenu onMouseLeave={onDisplaySummrySwitch}>
+                  <ul>
                   <DropdownItem>
-                  <a href="/summary">予算</a>
-                  <a href="/summary/count">集計</a>
+                  <Link href="/summary">予算</Link>
+                  <Link href="/summary/count">集計</Link>
                   </DropdownItem>
+                  </ul>
                 </DropdownMenu>
               )}
           </StyledListItem>
@@ -222,8 +228,33 @@ const Home: NextPage = () => {
           </ul>
         </section>
       </SFloat>
-    </SHome>
+      <SHomeFloat>
+        <h1>家計簿</h1>
+        <div>最新の入出金
+        <section>
+          <h2>2021年1月</h2>
+          <ul>
+            <li>
+              <p>2021/1/1</p>
+              <ul>
+                <li>1000円</li>
+              </ul>
+            </li>
+            <li>
+              <p>2021/1/2</p>
+              <ul>
+                <li>2000円</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        </div>
 
+      </SHomeFloat>
+    </SHome>
+    <div>
+      <Link href="/testtest">家計簿</Link>
+    </div>
     </>
   )
 }
