@@ -37,10 +37,6 @@ const Tabs: React.FC<Props> = ({ children }) => {
     setActiveTab(index);
   };
 
-  // const validChildren = React.Children.toArray(children).filter(
-  //   child => React.isValidElement(child)
-  // ) as ReactElement[];
-  // React.Children.toArray で子要素を配列化
   const childArray = React.Children.toArray(children);
 
   return (
