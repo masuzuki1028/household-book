@@ -97,54 +97,54 @@ a:hover {
 `;
 
 const Home: NextPage = () => {
-  const [showDropMenu, setShowDropMenu] = useState(false);
-  const [showSummaryMenu, setShowSummaryMenu] = useState(false);
-  const [timerId,setTimerId] = useState<number | undefined>(undefined); 
-  const [timerSummryId,setTimerSummryId] = useState<number | undefined>(undefined); 
+  // const [showDropMenu, setShowDropMenu] = useState(false);
+  // const [showSummaryMenu, setShowSummaryMenu] = useState(false);
+  // const [timerId,setTimerId] = useState<number | undefined>(undefined); 
+  // const [timerSummryId,setTimerSummryId] = useState<number | undefined>(undefined); 
 
-  const onDisplaySwitch = () => {
-    setShowDropMenu(!showDropMenu);
-    if (!showDropMenu) {
-      const id = setTimeout(() => {
-        setShowDropMenu(false);
-      }, 4000) as unknown as number;
-      setTimerId(id);
-    } else {
-      clearTimeout(timerId);
-    }
-  };
+  // const onDisplaySwitch = () => {
+  //   setShowDropMenu(!showDropMenu);
+  //   if (!showDropMenu) {
+  //     const id = setTimeout(() => {
+  //       setShowDropMenu(false);
+  //     }, 4000) as unknown as number;
+  //     setTimerId(id);
+  //   } else {
+  //     clearTimeout(timerId);
+  //   }
+  // };
 
-  const onDisplaySummrySwitch = () => {
-    setShowSummaryMenu(!showSummaryMenu);
-    if (!showSummaryMenu) {
-      const id = setTimeout(() => {
-        setShowSummaryMenu(false);
-      }, 4000) as unknown as number;
-      setTimerSummryId(id);
-    } else {
-      clearTimeout(timerSummryId);
-    }
-  };
+  // const onDisplaySummrySwitch = () => {
+  //   setShowSummaryMenu(!showSummaryMenu);
+  //   if (!showSummaryMenu) {
+  //     const id = setTimeout(() => {
+  //       setShowSummaryMenu(false);
+  //     }, 4000) as unknown as number;
+  //     setTimerSummryId(id);
+  //   } else {
+  //     clearTimeout(timerSummryId);
+  //   }
+  // };
 
-  useEffect(() => {
-    return () => {
-      if (timerId !== null) {
-        clearTimeout(timerId);
-      }
-    };
-  }, [timerId]); 
+  // useEffect(() => {
+  //   return () => {
+  //     if (timerId !== null) {
+  //       clearTimeout(timerId);
+  //     }
+  //   };
+  // }, [timerId]); 
 
-  useEffect(() => {
-    return () => {
-      if (timerSummryId !== null) {
-        clearTimeout(timerSummryId);
-      }
-    };
-  }, [timerSummryId]); 
+  // useEffect(() => {
+  //   return () => {
+  //     if (timerSummryId !== null) {
+  //       clearTimeout(timerSummryId);
+  //     }
+  //   };
+  // }, [timerSummryId]); 
 
   return (
     <>
-    <SContainer>
+    {/* <SContainer>
       <SLogo>
         <a href="/">
           <Image src="/logo.png" width={300} height={100} alt="Logo"/>
@@ -193,7 +193,7 @@ const Home: NextPage = () => {
               <StyledAnchor href="/profile">設定</StyledAnchor>
           </StyledListItem>
           </SNavi>
-    </SContainer>
+    </SContainer> */}
     <SHome>
       <SFloat>
         <h1>総資産</h1>
@@ -252,9 +252,6 @@ const Home: NextPage = () => {
 
       </SHomeFloat>
     </SHome>
-    <div>
-      <Link href="/testtest">家計簿</Link>
-    </div>
     </>
   )
 }

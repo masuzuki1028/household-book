@@ -5,6 +5,7 @@ import styled from "styled-components";
 const TabList = styled.div`
   display: flex;
   background-color: #f0f0f0;
+  padding: 0px;
 `;
 
 const Tab = styled.button<{ isActive: boolean }>`

@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import Tabs from '@/components/Tabs'
 import TabPanel from '@/components/TabPanel'
 
-const Cf: NextPage = () => {
+const CfSummary: NextPage = () => {
   return (
     <>
       <Tabs>
@@ -14,4 +14,4 @@ const Cf: NextPage = () => {
   )
 }
 
-export default Cf
+export default CfSummary
