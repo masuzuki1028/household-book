@@ -2,7 +2,7 @@ import TabPanel from '@/components/TabPanel'
 import Tabs from '@/components/Tabs'
 import type { NextPage } from 'next'
 
-const Summary: NextPage = () => {
+const SummaryCount: NextPage = () => {
   return (
     <>
       <Tabs>
@@ -13,4 +13,4 @@ const Summary: NextPage = () => {
   )
 }
 
-export default Summary
+export default SummaryCount
