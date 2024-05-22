@@ -40,37 +40,37 @@ const SNavi = styled.ul`
 
 const SDropdownMenu = styled.div`
   position: absolute;
-  top: 100%; // トリガー要素の下端から配置
-  left: 0; // 左端をトリガー要素に合わせる
-  margin-top: 0; // マージンを0に設定してギャップをなくす
-  width: 100%; // トリガー要素と同じ幅にする
+  top: 100%;
+  left: 0;
+  margin-top: 0;
+  width: 100%;
   border-radius: 2px;
   padding: 8px 0px;
   background: white;
   color: black;
   box-shadow: 1px 1px 4px 1px #33333326;
-  z-index: 1000; // ドロップダウンが他の要素に覆われないように
+  z-index: 1000;
 `;
 
 const SDropdownItem = styled.div`
   a {
-    display: block; // それぞれのアイテムをブロック要素として扱う
+    display: block; 
     padding: 8px 16px;
     color: black;
-    text-decoration: none; // リンクの下線を消す
-    font-size: 16px; // フォントサイズを統一
+    text-decoration: none; 
+    font-size: 16px;
     &:hover {
-      background-color: #e1e1e1; // ホバー時の背景色
+      background-color: #e1e1e1;
     }
   }
 `;
 
 const StyledListItem = styled.li`
-  position: relative; // これによりドロップダウンの位置基準を設定
+  position: relative;
   margin-right: 10px;
   width: 100%;
   &:hover ${SDropdownMenu} {
-    display: block; // ホバー時にドロップダウンを表示
+    display: block; 
   }
 
   a {
@@ -82,13 +82,12 @@ const StyledLink = styled.span`
   text-decoration: none;
   color: black;
   display: block;
-  padding: 10px 20px; // リンクにパディングを追加してクリック領域を増やす
-  width: 100%; // リンクの幅を親要素に合わせる
-  box-sizing: border-box; // パディングを幅に含める
-  font-weight: 600; // 太字にする
+  padding: 10px 20px;
+  width: 100%; 
+  box-sizing: border-box;
+  font-weight: 600;
   &:hover {
-    background-color: #f0f0f0; // ホバー時の背景色
-}
+    background-color: #f0f0f0;
 `;
 
 const Header = () => {
